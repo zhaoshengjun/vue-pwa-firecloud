@@ -37,8 +37,8 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["index.html","07a6307ee3b7195f84fc5027b9a34d97"],["manifest.json","73345d3a3ecb0673ccb337300409bafb"]];
-var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
+var precacheConfig = [["dist/build.js","147c13a35bfd146f5cd8d876a934d870"],["index.html","07a6307ee3b7195f84fc5027b9a34d97"],["manifest.json","73345d3a3ecb0673ccb337300409bafb"]];
+var cacheName = 'sw-precache-v3-vue-pwa-firecloud-' + (self.registration ? self.registration.scope : '');
 
 
 var ignoreUrlParametersMatching = [/^utm_/];

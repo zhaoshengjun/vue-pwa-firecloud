@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+const SWPrecache = require('sw-precache-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -70,6 +71,12 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new SWPrecache({
+      cacheId: 'vue-pwa-firecloud',
+      filepath: 'service-worker.js',
+      staticFileGlobs: ['index.html', 'manifest.json', 'dist/**/*.{css,js}'],
+      stripPrefix: '/'
     })
   ])
 }
