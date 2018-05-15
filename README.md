@@ -1,5 +1,10 @@
-# vue-pwa
+# vue-pwa-firecloud
 
-You can find in this repository the code for the course _Offline-First Progressive Web App (PWA) in Vue.js_.
+build pwa app using `vue` and `firecloud`
 
-Each branch is named as `lesson-XX/...` which includes the code for that particular reason. Feel free to navigate through them and their commits.
+## How to generate service worker
+
+```bash
+npm i -g sw-precache
+sw-precache --config sw-config.js
+```
