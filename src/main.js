@@ -28,3 +28,7 @@ new Vue({
   router,
   render: h => h(App)
 })
+
+navigator.serviceWorker.register('/service-worker.js').then(() => {
+  console.log('SW registered!')
+})
