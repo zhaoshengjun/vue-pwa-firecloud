@@ -29,6 +29,9 @@ new Vue({
   render: h => h(App)
 })
 
-navigator.serviceWorker.register('/service-worker.js').then(() => {
-  console.log('SW registered!')
-})
+const shouldSW = 'serviceWorker' in navigator
+if (shouldSW) {
+  navigator.serviceWorker.register('/service-worker.js').then(() => {
+    console.log('SW registered!')
+  })
+}
