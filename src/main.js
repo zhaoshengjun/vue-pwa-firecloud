@@ -36,9 +36,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js').then(reg => {
     reg.onupdatefound = () => {
       const sw = reg.installing
-
       sw.onstatechange = () => {
-        if ((sw.state = 'installed')) {
+        if (sw.state == 'installed') {
           if (navigator.serviceWorker.controller) {
             // New version
             app.show = true
