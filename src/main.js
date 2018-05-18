@@ -10,6 +10,7 @@ import Details from './components/Details'
 import Images from './components/Images'
 import Vuetify from 'vuetify'
 import VueFire from 'vuefire'
+import { app } from 'firebase'
 
 Vue.use(VueFire)
 Vue.use(VueRouter)
@@ -25,12 +26,30 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
-  router,
-  render: h => h(App)
+  components: { App },
+  data: { message: '', show: false },
+  template: '<app :message="message" :show="show"> </app>',
+  router
 })
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js').then(() => {
-    console.log('SW registered!')
+  navigator.serviceWorker.register('/service-worker.js').then(reg => {
+    reg.onupdatefound = () => {
+      const sw = reg.installing
+
+      sw.onstatechange = () => {
+        if ((sw.state = 'installed')) {
+          if (navigator.serviceWorker.controller) {
+            // New version
+            app.show = true
+            app.message = 'A new version is available.'
+          } else {
+            // Contents are catched
+            app.show = true
+            app.message = 'Contents are now offline.'
+          }
+        }
+      }
+    }
   })
 }
