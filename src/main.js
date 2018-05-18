@@ -28,15 +28,9 @@ new Vue({
   router,
   render: h => h(App)
 })
-const prod = process.env.NODE_ENV === 'production'
-const shouldSW = 'serviceWorker' in navigator && prod
-const shouldSWDev = 'serviceWorker' in navigator && !prod
-if (shouldSW) {
+
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js').then(() => {
     console.log('SW registered!')
-  })
-} else if (shouldSWDev) {
-  navigator.serviceWorker.register('/service-worker-dev.js').then(() => {
-    console.log('SW dev registered!')
   })
 }
