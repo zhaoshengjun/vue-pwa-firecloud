@@ -3,7 +3,7 @@
     <Toolbar/>
     <main>
       <v-content>
-          <router-view></router-view>
+          <router-view :online="online"></router-view>
       </v-content>
     </main>
     <v-footer app></v-footer>

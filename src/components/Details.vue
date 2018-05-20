@@ -6,7 +6,7 @@
       </v-flex>
     </v-layout>
 
-    <DetailsFooter @send="sendMessage" />
+    <DetailsFooter @send="sendMessage" :online="online" />
   </v-container>
 </template>
 
@@ -14,12 +14,12 @@
 <script>
 import DetailsFooter from './DetailsFooter'
 import { imagesRef } from '../db'
-import { save, get } from "../store";
+import { save, get } from '../store'
 
 export default {
-  props: ['id'],
-  data:() => ({
-    cachedMessages:[]
+  props: ['id', 'online'],
+  data: () => ({
+    cachedMessages: []
   }),
   firebase: function() {
     return { fireMessages: imagesRef.child(this.id).limitToLast(60) }
@@ -29,16 +29,16 @@ export default {
       this.$firebaseRefs.fireMessages.push(input)
     }
   },
-  computed:{
+  computed: {
     messges() {
       return this.fireMessages.length ? this.fireMessages : this.cachedMessages
     }
   },
   created() {
-    get(this.id).then((messages) => {
+    get(this.id).then(messages => {
       this.cachedMessages = messages
-    });
-    this.$watch('messages', messages => save(this.id, messages), {deep:true})
+    })
+    this.$watch('messages', messages => save(this.id, messages), { deep: true })
   },
   components: {
     DetailsFooter

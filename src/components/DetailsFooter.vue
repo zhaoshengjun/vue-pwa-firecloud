@@ -6,7 +6,7 @@
             <v-layout class="form-row" row>
               <v-flex xs12>
                 <v-text-field
-
+                  :disabled="!online"
                   class="input"
                   v-model="input"
                   label="Message"
@@ -14,7 +14,7 @@
                 ></v-text-field>
               </v-flex>
               <v-flex>
-                <v-btn type="submit" icon flat><v-icon>send</v-icon></v-btn>
+                <v-btn type="submit" :disabled="!online" icon flat><v-icon>send</v-icon></v-btn>
               </v-flex>
             </v-layout>
           </v-form>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['id'],
+  props: ['id', 'online'],
   data: () => ({ input: '' }),
   methods: {
     send() {
