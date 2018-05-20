@@ -21,8 +21,20 @@
 import Toolbar from './components/Toolbar'
 export default {
   props: ['show', 'message'],
+  data: () => ({
+    online: false
+  }),
   components: {
     Toolbar
+  },
+  mounted() {
+    this.online = navigator.online
+    window.addEventListener('online', () => {
+      this.online = true
+    })
+    window.addEventListener('offline', () => {
+      this.online = false
+    })
   }
 }
 </script>
