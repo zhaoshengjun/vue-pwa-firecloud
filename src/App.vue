@@ -14,9 +14,9 @@
   >
     {{message}}
   </v-snackbar>
-  <v-snackbak :absolute="true" :timeout="4000" v-model="showOfflineMessage">
+  <v-snackbar :absolute="true" :timeout="4000" v-model="showOfflineMessage">
     The app is offline, some features might be disabled.
-  </v-snackbak>
+  </v-snackbar>
   </v-app>
 </template>
 

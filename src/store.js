@@ -1,9 +1,5 @@
-import idbKeyval from 'idb-keyval'
+import { get, set } from 'idb-keyval'
 
-export const save = (id, message) => {
-  return idbKeyval.set(id, message)
-}
+export const localSave = (id, messages) => set(id, messages)
 
-export const get = id => {
-  idbKeyval.get(id)
-}
+export const localGet = id => get(id)
