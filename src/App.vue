@@ -14,6 +14,9 @@
   >
     {{message}}
   </v-snackbar>
+  <v-snackbak :absolute="true" :timeout="4000" v-model="showOfflineMessage">
+    The app is offline, some features might be disabled.
+  </v-snackbak>
   </v-app>
 </template>
 
@@ -22,7 +25,8 @@ import Toolbar from './components/Toolbar'
 export default {
   props: ['show', 'message'],
   data: () => ({
-    online: false
+    online: false,
+    showOfflineMessage: false
   }),
   components: {
     Toolbar
@@ -34,6 +38,7 @@ export default {
     })
     window.addEventListener('offline', () => {
       this.online = false
+      this.showOfflineMessage = true
     })
   }
 }
